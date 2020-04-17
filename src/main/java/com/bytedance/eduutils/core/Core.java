@@ -25,7 +25,6 @@ public class Core {
     public static void main(String[] args) throws IOException {
         PoiExcel poiExcel = new PoiExcel();
         ArrayList<List<?>> file1 = poiExcel.readExcel("file/1.XLSX", User.class);
-//        ArrayList<List<?>> file2 = poiExcel.readExcel("file/2.XLSX", User.class);
 
         List<User> users = new ArrayList<User>();
         for (int i = 1; i < file1.size(); i++) {
@@ -35,7 +34,6 @@ public class Core {
             int i1 = (int) o1;
             users.add(new User("hello" + (String) temp.get(0), (String) temp.get(1), i1));
         }
-
         poiExcel.writeExcel("file/2.XLSX", users, User.class);
     }
 

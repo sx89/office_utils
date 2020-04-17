@@ -23,7 +23,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
  */
 public class PoiExcel {
 
-    public static <T> ArrayList<List<? extends T>> readExcel(String path, Class clzz) {
+    public <T> ArrayList<List<? extends T>> readExcel(String path, Class clzz) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         List<T> list = new LinkedList<T>();
         ArrayList<List<? extends T>> fileData = new ArrayList<>();
@@ -204,7 +204,7 @@ public class PoiExcel {
 
 
     @SuppressWarnings("resource")
-    public static <T> void writeExcel(String path, List<T> list, Class<T> clzz) throws IOException {
+    public <T> void writeExcel(String path, List<T> list, Class<T> clzz) throws IOException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Field[] declaredFields = clzz.getDeclaredFields();
         File file = new File(path);
@@ -287,10 +287,6 @@ public class PoiExcel {
                     System.out.println("创建Excel表格失败!");
                 }
             }
-
-//            if (fos != null) {
-////                fos.close();
-//            }
         } catch (Exception e) {
             e.printStackTrace();
         }
